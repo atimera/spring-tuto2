@@ -21,13 +21,21 @@ public class TennisCoach implements Coach {
 	}
 	*/
 	
+	/*
 	// define setter method for dependency injection
 	@Autowired
 	public void setFortuneService(FortuneService fortuneService) {
 		System.out.println(">> inside method setFortuneService");
 		this.fortuneService = fortuneService;
 	}
-
+	*/
+	
+	// define any method for dependency injection
+	@Autowired
+	public void doSomeCrazySuff(FortuneService fortuneService) {
+		System.out.println(">> inside method doSomeCrazySuff");
+		this.fortuneService = fortuneService;
+	}
 
 
 	@Override
