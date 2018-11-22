@@ -1,13 +1,17 @@
 package com.amdiatou.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Component
-@Scope("prototype")
+@Scope("singleton")
 public class TennisCoach implements Coach {
 	
 	@Autowired
@@ -23,6 +27,16 @@ public class TennisCoach implements Coach {
 	public TennisCoach() {
 	}
 	
+	@PostConstruct
+	public void doThisOnInit() {
+		System.out.println(">> inside doThisOnInit() method");		
+	}
+	
+	@PreDestroy
+	public void doThisOnDestroy() {
+		System.out.println(">> inside doThisOnDestroy() method");
+	}
+
 	/*
 	@Autowired
 	public TennisCoach(FortuneService pFortuneService) {
