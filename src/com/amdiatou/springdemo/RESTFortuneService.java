@@ -4,8 +4,8 @@ import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
-@Component
-public class RandomFortuneService implements FortuneService {
+@Component("restFortuneService")
+public class RESTFortuneService implements FortuneService {
 
 	private String[] data = {
 			"You are in a Bad mood today!",
@@ -21,7 +21,7 @@ public class RandomFortuneService implements FortuneService {
 	@Override
 	public String getFortune() {
 		int index = rand.nextInt(data.length);
-		String theFortune ="RandomFortuneService: "+ data[index];
+		String theFortune = "RESTFortuneService: "+ data[index];
 		
 		return theFortune;
 	}

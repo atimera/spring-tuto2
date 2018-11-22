@@ -2,16 +2,23 @@ package com.amdiatou.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TennisCoach implements Coach {
 	
 	@Autowired
+	@Qualifier("restFortuneService")
 	private FortuneService fortuneService;
 
+	@Value("${tennisCoach.emailAdress}")
+	private String emailAddress;
+	
+	@Value("${tennisCoach.team}")
+	private String team;
+	
 	public TennisCoach() {
-		System.out.println(">> inside default constructor");
 	}
 	
 	/*
@@ -50,6 +57,26 @@ public class TennisCoach implements Coach {
 	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
+	}
+
+	@Override
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	@Override
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	@Override
+	public String getTeam() {
+		return team;
+	}
+
+	@Override
+	public void setTeam(String team) {
+		this.team = team;
 	}
 
 }
